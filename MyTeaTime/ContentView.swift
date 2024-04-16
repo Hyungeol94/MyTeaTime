@@ -51,20 +51,17 @@ struct ContentView: View {
         //select TeaTimeBook first
         NavigationStack {
             CouponBookView(teaTimeBooks: $TeaTimeBooks)
-                
-//                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: {print("add")}) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                .toolbar {
+                    Button(action: {
+                        print("add")
+                    }, label: {
+                        Image(systemName:
+                        "plus.circle.fill")
+                    })
                 }
             }
     }
+    
     
 
 //    private func addItem() {
