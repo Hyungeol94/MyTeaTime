@@ -8,6 +8,23 @@
 import SwiftUI
 import SwiftData
 
+struct TeaTimeBook {
+    var id: UUID = UUID()
+    var title: String
+    var createdTime: Date
+    var MemoArray: [Memo]?
+}
+
+struct Memo {
+    var id: UUID = UUID()
+    var title: String
+    var createdTime: Date
+    var content: String?
+    var image: Image?
+}
+
+
+
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
