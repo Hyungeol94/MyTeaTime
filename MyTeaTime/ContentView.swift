@@ -45,6 +45,8 @@ struct ContentView: View {
         TeaTimeBook(title : "나의 커피북",
                     createdTime : Date.now)
     ]
+    @State var showSheet = false
+    @State var newBookTitle = ""
 
     
     var body: some View {
@@ -53,12 +55,23 @@ struct ContentView: View {
             CouponBookView(teaTimeBooks: $TeaTimeBooks)
                 .toolbar {
                     Button(action: {
-                        print("add")
+                        showSheet = true
                     }, label: {
                         Image(systemName:
                         "plus.circle.fill")
                     })
                 }
+                .sheet(isPresented: $showSheet, content: {
+                    TextField("새로운 티타임북",
+                              text: $newBookTitle)
+                    Button(action:{
+                        TeaTimeBooks.append(TeaTimeBook(title : "나의 커피북",
+                                                        createdTime : Date.now))
+                        showSheet = false
+                    }, label: {
+                        Text("추가")
+                    })
+                })
             }
     }
     
