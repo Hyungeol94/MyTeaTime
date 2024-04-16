@@ -8,11 +8,23 @@
 import SwiftUI
 import SwiftData
 
-struct TeaTimeBook {
+//struct TeaTimeBook {
+//    var id: UUID = UUID()
+//    var title: String
+//    var createdTime: Date
+//    var MemoArray: [Memo]?
+//}
+
+class TeaTimeBook {
     var id: UUID = UUID()
     var title: String
     var createdTime: Date
     var MemoArray: [Memo]?
+    
+    init (title: String, createdTime: Date){
+        self.title = "나의 티타임";
+        self.createdTime = Date.now;
+    }
 }
 
 struct Memo {
@@ -31,28 +43,16 @@ struct ContentView: View {
 //    @Query private var TeaTimeBooks: [TeaTimeBook]
     @State var TeaTimeBooks: [TeaTimeBook] = [
         TeaTimeBook(title : "나의 커피북",
-                    createdTime : Date.now,
-                    MemoArray : [])
+                    createdTime : Date.now)
     ]
-    
+
     
     var body: some View {
         //select TeaTimeBook first
-        var selectedTeaTimeBook = TeaTimeBooks.last
         NavigationStack {
-            // 여기에 선택된 id의 TeaTimeBook의 아이템을 뿌려주기
-            // TeaTimeBook의 element는 Memo임 !
-            
-            List {
-                ForEach (selectedTeaTimeBook) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-//                .onDelete(perform: deleteItems)
+            CouponBookView(teaTimeBooks: $TeaTimeBooks)
                 
+//                .onDelete(perform: deleteItems)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -64,10 +64,8 @@ struct ContentView: View {
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
     }
+    
 
 //    private func addItem() {
 //        withAnimation {
