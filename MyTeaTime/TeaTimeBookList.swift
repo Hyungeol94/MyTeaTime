@@ -24,6 +24,7 @@ struct TeaTimeBookList: View{
                        }
                    }
                }
+               .navigationBarTitle("티타임북")
                .toolbar {
                       Button(action: {
                           showSheet = true
@@ -32,6 +33,7 @@ struct TeaTimeBookList: View{
                           "plus.circle.fill")
                       })
                   }
+             
                   .sheet(isPresented: $showSheet, content: {
                       TextField("새로운 티타임북",
                                 text: $newBookTitle)
