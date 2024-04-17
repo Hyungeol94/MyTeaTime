@@ -19,18 +19,23 @@ struct CouponBookView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
-        GridItem(.flexible())
     ]
     
     var body: some View {
         //CollectionView
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(0...100, id: \.self) { _ in
-                    Color.orange.frame(width: 100, height: 100)
+                ForEach(0...8, id: \.self) { _ in
+//                    Color.orange.frame(width: 120, height: 120)
+                    Image("DefaultCoffee")
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .scaledToFit()
                 }
             }
-        } .toolbar {
+        } 
+        .navigationTitle(teaTimeBook.title)
+        .toolbar {
             Button(action: {
                 showSheet = true
             }, label: {
