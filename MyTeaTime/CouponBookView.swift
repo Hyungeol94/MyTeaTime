@@ -10,6 +10,10 @@ import SwiftUI
 
 struct CouponBookView: View {
     @Binding var teaTimeBook: TeaTimeBook
+    @State var newMemoTitle: String = ""
+    @State var newMemoContent: String = ""
+    @State var newMemoImage: Image = Image(systemName: "cup.and.saucer.fill")
+    @State var showSheet: Bool = false
     
     let columns = [
         GridItem(.flexible()),
@@ -26,6 +30,23 @@ struct CouponBookView: View {
                     Color.orange.frame(width: 100, height: 100)
                 }
             }
+        } .toolbar {
+            Button(action: {
+                showSheet = true
+            }, label: {
+                Image(systemName:
+                "plus.circle.fill")
+            })
         }
+        .sheet(isPresented: $showSheet, content: {
+            TextField("새로운 티타임 기록",
+                      text: $newMemoTitle)
+            Button(action:{
+                teaTimeBook.MemoArray.append(Memo(title: newMemoTitle, content: newMemoContent, image: newMemoImage));
+                showSheet = false
+            }, label: {
+                Text("추가")
+            })
+        })
     }
 }
