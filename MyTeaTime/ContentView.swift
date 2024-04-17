@@ -22,8 +22,8 @@ class TeaTimeBook {
     var MemoArray: [Memo]?
     
     init (title: String, createdTime: Date){
-        self.title = "나의 티타임";
-        self.createdTime = Date.now;
+        self.title = title
+        self.createdTime = Date.now
     }
 }
 
@@ -41,8 +41,8 @@ struct ContentView: View {
 //    @Environment(\.modelContext) private var modelContext
 //    @Query private var items: [Item]
 //    @Query private var TeaTimeBooks: [TeaTimeBook]
-    @State var TeaTimeBooks: [TeaTimeBook] = [
-        TeaTimeBook(title : "나의 커피북",
+    @State var teaTimeBooks: [TeaTimeBook] = [
+        TeaTimeBook(title : "나의 티타임북",
                     createdTime : Date.now)
     ]
     @State var showSheet = false
@@ -51,28 +51,7 @@ struct ContentView: View {
     
     var body: some View {
         //select TeaTimeBook first
-        NavigationStack {
-            CouponBookView(teaTimeBooks: $TeaTimeBooks)
-                .toolbar {
-                    Button(action: {
-                        showSheet = true
-                    }, label: {
-                        Image(systemName:
-                        "plus.circle.fill")
-                    })
-                }
-                .sheet(isPresented: $showSheet, content: {
-                    TextField("새로운 티타임북",
-                              text: $newBookTitle)
-                    Button(action:{
-                        TeaTimeBooks.append(TeaTimeBook(title : "나의 커피북",
-                                                        createdTime : Date.now))
-                        showSheet = false
-                    }, label: {
-                        Text("추가")
-                    })
-                })
-            }
+        TeaTimeBookList(teaTimeBooks: $teaTimeBooks)
     }
     
     

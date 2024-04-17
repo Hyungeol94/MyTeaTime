@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CouponBookView: View {
-    @Binding var teaTimeBooks: [TeaTimeBook]
+    @Binding var teaTimeBook: TeaTimeBook
     
     let columns = [
         GridItem(.flexible()),
