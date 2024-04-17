@@ -15,15 +15,17 @@ import SwiftData
 //    var MemoArray: [Memo]?
 //}
 
-class TeaTimeBook {
+struct TeaTimeBook: Identifiable {
     var id: UUID = UUID()
     var title: String
     var createdTime: Date
     var MemoArray: [Memo]?
+    var isFavorite: Bool
     
-    init (title: String, createdTime: Date){
+    init (title: String){
         self.title = title
         self.createdTime = Date.now
+        self.isFavorite = true
     }
 }
 
@@ -42,8 +44,7 @@ struct ContentView: View {
 //    @Query private var items: [Item]
 //    @Query private var TeaTimeBooks: [TeaTimeBook]
     @State var teaTimeBooks: [TeaTimeBook] = [
-        TeaTimeBook(title : "나의 티타임북",
-                    createdTime : Date.now)
+        TeaTimeBook(title : "나의 티타임북")
     ]
     @State var showSheet = false
     @State var newBookTitle = ""
