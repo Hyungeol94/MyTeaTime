@@ -16,11 +16,11 @@ struct TeaTimeBookList: View{
     var body: some View{
            NavigationSplitView{
                List{
-                   ForEach($teaTimeBooks){ teaTimeBook in
+                   ForEach($teaTimeBooks){ $teaTimeBook in
                        NavigationLink{
-                           CouponBookView(teaTimeBook: teaTimeBook)
+                           CouponBookView(teaTimeBook: $teaTimeBook)
                        } label: {
-                           TeaTimeBookRow(teaTimeBook: teaTimeBook)
+                           TeaTimeBookRow(teaTimeBook: $teaTimeBook)
                        }
                    }
                }
@@ -36,8 +36,7 @@ struct TeaTimeBookList: View{
                       TextField("새로운 티타임북",
                                 text: $newBookTitle)
                       Button(action:{
-                          teaTimeBooks.append(TeaTimeBook(title : newBookTitle,
-                                                          createdTime : Date.now))
+                          teaTimeBooks.append(TeaTimeBook(title : newBookTitle))
                           showSheet = false
                       }, label: {
                           Text("추가")
