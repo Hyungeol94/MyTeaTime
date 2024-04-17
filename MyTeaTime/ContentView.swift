@@ -13,13 +13,14 @@ struct TeaTimeBook: Identifiable {
     var id: UUID = UUID()
     var title: String
     var createdTime: Date
-    var MemoArray: [Memo]?
+    var MemoArray: [Memo]
     var isFavorite: Bool
     
     init (title: String){
+        self.MemoArray = []
         self.title = title
         self.createdTime = Date.now
-        self.isFavorite = true
+        self.isFavorite = false
     }
 }
 
@@ -29,6 +30,13 @@ struct Memo {
     var createdTime: Date
     var content: String?
     var image: Image?
+    
+    init(title:String, content: String, image: Image){
+        self.title = title
+        self.createdTime = Date.now
+        self.content = content
+        self.image = image
+    }
 }
 
 
