@@ -9,15 +9,25 @@ import SwiftUI
 
 struct TeaTimeBookRow: View{
     @Binding var teaTimeBook: TeaTimeBook
+    
     var body: some View{
-//        Text("place holder")
+        //        Text("place holder")
         HStack{
-//            Image(teaTimeBook.imageName)
-//                .resizable()
-//                .frame(width: 50, height: 50)
+            //            Image(teaTimeBook.imageName)
+            //                .resizable()
+            //                .frame(width: 50, height: 50)
             Text(teaTimeBook.title)
             Spacer()
-//            Image(systemName: mountain.isFavorite ? "star.fill" : "star")
+            Button {
+                teaTimeBook.isFavorite.toggle()
+            } label: {
+                Image(systemName: teaTimeBook.isFavorite ? "star.fill" : "star")
+            }
+            .buttonStyle(BorderlessButtonStyle())
+            .frame(width: 3)
+            .offset(x: 10)
+            Spacer()
+                .frame(width: 30)
         }
     }
 }
