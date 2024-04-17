@@ -46,9 +46,6 @@ struct ContentView: View {
     @State var teaTimeBooks: [TeaTimeBook] = [
         TeaTimeBook(title : "나의 티타임북")
     ]
-    @State var showSheet = false
-    @State var newBookTitle = ""
-
     
     var body: some View {
         //select TeaTimeBook first
