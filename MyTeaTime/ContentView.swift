@@ -8,12 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//struct TeaTimeBook {
-//    var id: UUID = UUID()
-//    var title: String
-//    var createdTime: Date
-//    var MemoArray: [Memo]?
-//}
 
 struct TeaTimeBook: Identifiable {
     var id: UUID = UUID()
