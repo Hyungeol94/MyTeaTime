@@ -1,0 +1,17 @@
+.DS_Store
+xcuserdata/
+*.xcuserstate
+*.xcworkspace/contents.xcworkspacedata
+!*.xcworkspace/xcshareddata/
+!*.xcworkspace/xcuserdata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
