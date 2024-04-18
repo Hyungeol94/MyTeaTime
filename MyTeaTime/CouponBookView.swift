@@ -12,8 +12,9 @@ struct CouponBookView: View {
     @Binding var teaTimeBook: TeaTimeBook
     @State var newMemoTitle: String = ""
     @State var newMemoContent: String = ""
-    @State var newMemoImage: Image = Image(systemName: "cup.and.saucer.fill")
+    @State var newMemoImageName: String = "DefaultCoffee"
     @State var showSheet: Bool = false
+    @State var isShowingMemo: Bool = false
     
     let columns = [
         GridItem(.flexible()),
@@ -24,7 +25,7 @@ struct CouponBookView: View {
     
     var body: some View {
         //CollectionView
-        var memoCount = teaTimeBook.MemoArray.count
+        let memoCount = teaTimeBook.MemoArray.count
         let rowCount = max(3, Int(ceil(Double(memoCount) / 3)))
         let finalRowCount = rowCount * 3 == memoCount ? rowCount+1 : rowCount
         
@@ -33,13 +34,17 @@ struct CouponBookView: View {
                 ForEach(0...finalRowCount*3-1, id: \.self) { i in
 //                    Color.orange.frame(width: 120, height: 120)
                     if (i < memoCount){
-                        Button{
-                            print("go to detail {teaTimeBook.MemoArray[i]}")
-                        } label: {
-                            Image("FilledCoffee")
-                                .resizable()
-                                .frame(width: 120, height: 120)
-                                .scaledToFit()
+                        NavigationStack{
+                            Button{
+                                isShowingMemo = true
+                                print("go to detail {teaTimeBook.MemoArray[i]}")
+                            } label: {
+                                Image("FilledCoffee")
+                                    .resizable()
+                                    .frame(width: 120, height: 120)
+                                    .scaledToFit()
+                            }
+                            .navigationDestination(isPresented: $isShowingMemo, destination: {MemoView(memo: $teaTimeBook.MemoArray[i])})
                         }
                     }
                     else{
@@ -64,7 +69,7 @@ struct CouponBookView: View {
             TextField("새로운 티타임 기록",
                       text: $newMemoTitle)
             Button(action:{
-                teaTimeBook.MemoArray.append(Memo(title: newMemoTitle, content: newMemoContent, image: newMemoImage));
+                teaTimeBook.MemoArray.append(Memo(title: newMemoTitle, content: newMemoContent, imageName: newMemoImageName));
                 showSheet = false
             }, label: {
                 Text("추가")
