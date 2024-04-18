@@ -28,14 +28,14 @@ struct Memo {
     var id: UUID = UUID()
     var title: String
     var createdTime: Date
-    var content: String?
-    var image: Image?
+    var content: String
+    var imageName: String
     
-    init(title:String, content: String, image: Image){
+    init(title:String, content: String, imageName: String){
         self.title = title
         self.createdTime = Date.now
         self.content = content
-        self.image = image
+        self.imageName = imageName
     }
 }
 
@@ -55,7 +55,6 @@ struct ContentView: View {
     }
     
     
-
 //    private func addItem() {
 //        withAnimation {
 //            let newItem = Item(timestamp: Date())
