@@ -14,7 +14,7 @@ struct TeaTimeBookList: View{
     @State var newBookTitle: String = ""
     
     var body: some View{
-           NavigationSplitView{
+           NavigationStack{
                List{
                    ForEach($teaTimeBooks){ $teaTimeBook in
                        NavigationLink{
@@ -44,9 +44,10 @@ struct TeaTimeBookList: View{
                           Text("추가")
                       })
                   })
-           } detail : {
-               Text("티타임북을 선택하세요")
-           }
+           } 
+//        detail : {
+//               Text("티타임북을 선택하세요")
+//           }
         //
         
        }

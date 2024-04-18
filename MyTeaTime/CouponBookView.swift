@@ -28,41 +28,41 @@ struct CouponBookView: View {
         let memoCount = teaTimeBook.MemoArray.count
         let rowCount = max(3, Int(ceil(Double(memoCount) / 3)))
         let finalRowCount = rowCount * 3 == memoCount ? rowCount+1 : rowCount
-        
+
         ScrollView {
+          
             LazyVGrid(columns: columns) {
-                ForEach(0...finalRowCount*3-1, id: \.self) { i in
-//                    Color.orange.frame(width: 120, height: 120)
-                    if (i < memoCount){
-                        NavigationStack{
-                            Button{
-                                isShowingMemo = true
-                                print("go to detail {teaTimeBook.MemoArray[i]}")
+//                NavigationStack{
+                    ForEach(0...finalRowCount*3-1, id: \.self) { i in
+                        //                    Color.orange.frame(width: 120, height: 120)
+                        if (i < memoCount){
+                            //                        NavigationStack {
+                            NavigationLink {
+                                MemoView(memo: $teaTimeBook.MemoArray[i])
                             } label: {
                                 Image("FilledCoffee")
                                     .resizable()
                                     .frame(width: 120, height: 120)
                                     .scaledToFit()
                             }
-                            .navigationDestination(isPresented: $isShowingMemo, destination: {MemoView(memo: $teaTimeBook.MemoArray[i])})
+                        }
+                        else {
+                            Image("DefaultCoffee")
+                                .resizable()
+                                .frame(width: 120, height: 120)
+                                .scaledToFit()
                         }
                     }
-                    else{
-                        Image("DefaultCoffee")
-                            .resizable()
-                            .frame(width: 120, height: 120)
-                            .scaledToFit()
-                    }
-                }
+                
             }
-        } 
+        }
         .navigationTitle(teaTimeBook.title)
         .toolbar {
             Button(action: {
                 showSheet = true
             }, label: {
                 Image(systemName:
-                "plus.circle.fill")
+                        "plus.circle.fill")
             })
         }
         .sheet(isPresented: $showSheet, content: {
