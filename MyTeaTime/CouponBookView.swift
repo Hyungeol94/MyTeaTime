@@ -15,6 +15,7 @@ struct CouponBookView: View {
     @State var newMemoImageName: String = "DefaultCoffee"
     @State var showSheet: Bool = false
     @State var isShowingMemo: Bool = false
+    @State var currentDate = Date()
     
     let columns = [
         GridItem(.flexible()),
@@ -66,8 +67,16 @@ struct CouponBookView: View {
             })
         }
         .sheet(isPresented: $showSheet, content: {
-            TextField("새로운 티타임 기록",
+            TextField("새로운 티타임 제목",
                       text: $newMemoTitle)
+            Divider()
+            DatePicker(
+                    "티타임 시간", selection: $currentDate, displayedComponents: [.date])
+            .datePickerStyle(.automatic)
+            Divider()
+            TextField("본문",
+                      text: $newMemoContent)
+         
             Button(action:{
                 teaTimeBook.MemoArray.append(Memo(title: newMemoTitle, content: newMemoContent, imageName: newMemoImageName));
                 showSheet = false
