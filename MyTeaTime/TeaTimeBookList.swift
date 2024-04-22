@@ -12,20 +12,28 @@ struct TeaTimeBookList: View{
     @Binding var teaTimeBooks: [TeaTimeBook]
     @State var showSheet: Bool = false
     @State var newBookTitle: String = ""
+//    @State private var selection = Set<TeaTimeBook>()
+    @State private var isEdit = false
     
     var body: some View{
            NavigationStack{
-               List{
+//               List(selection: $selection){
+               List {
                    ForEach($teaTimeBooks){ $teaTimeBook in
                        NavigationLink{
                            CouponBookView(teaTimeBook: $teaTimeBook)
                        } label: {
-                           TeaTimeBookRow(teaTimeBook: $teaTimeBook)
+                           TeaTimeBookRow(teaTimeBook: $teaTimeBook, isEdit: $isEdit)
                        }
                    }
                }
                .navigationBarTitle("티타임북")
                .toolbar {
+                       Button(action: {
+                           isEdit.toggle()
+                       }, label: {
+                           Text("선택")
+                       })
                       Button(action: {
                           showSheet = true
                       }, label: {

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct MemoView: View{
     @Binding var memo: Memo
+    @State var isEdit: Bool = false
     var body: some View {
         ScrollView{
             VStack{
@@ -20,8 +21,15 @@ struct MemoView: View{
                 //컨텐츠
                 Text(memo.content)
                     .lineSpacing(10.0)
-                
             }
+        }
+        .toolbar {
+            Button(action: {
+                isEdit.toggle()
+            }, label: {
+                Image(systemName:
+                        "pencil")
+            })
         }
     }
 }

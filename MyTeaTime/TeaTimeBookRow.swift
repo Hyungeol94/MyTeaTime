@@ -9,13 +9,16 @@ import SwiftUI
 
 struct TeaTimeBookRow: View{
     @Binding var teaTimeBook: TeaTimeBook
-    
+    @Binding var isEdit: Bool
     var body: some View{
-        //        Text("place holder")
         HStack{
-            //            Image(teaTimeBook.imageName)
-            //                .resizable()
-            //                .frame(width: 50, height: 50)
+            if isEdit {
+                Button {
+                    print("select")
+                } label: {
+                    Image(systemName: "circle")
+                }
+            }
             Text(teaTimeBook.title)
             Spacer()
             Button {

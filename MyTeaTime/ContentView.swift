@@ -9,7 +9,17 @@ import SwiftUI
 import SwiftData
 
 
+//struct TeaTimeBook: Identifiable, Hashable {
 struct TeaTimeBook: Identifiable {
+    
+//    func hash(into hasher: inout Hasher){
+//        hasher.combine(id)
+//    }
+//    
+//    static func == (lhs: TeaTimeBook, rhs: TeaTimeBook ) -> Bool{
+//        return lhs.id == rhs.id
+//    } // -> #즐겨찾기에서 오류가 남
+    
     var id: UUID = UUID()
     var title: String
     var createdTime: Date
