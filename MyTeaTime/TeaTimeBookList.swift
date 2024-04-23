@@ -12,7 +12,7 @@ struct TeaTimeBookList: View{
     @Binding var teaTimeBooks: [TeaTimeBook]
     @State var showSheet: Bool = false
     @State var newBookTitle: String = ""
-//    @State private var selection = Set<TeaTimeBook>()
+    @State private var selection = Set<TeaTimeBook>()
     @State private var isEdit = false
     
     var body: some View{
