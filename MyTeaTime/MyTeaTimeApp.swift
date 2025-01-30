@@ -12,7 +12,8 @@ import SwiftData
 struct MyTeaTimeApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            TeaTimeBook.self,
+            Memo.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

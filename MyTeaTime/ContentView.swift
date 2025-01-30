@@ -9,39 +9,6 @@ import SwiftUI
 import SwiftData
 
 
-struct TeaTimeBook: Identifiable, Hashable {
-
-    var id: UUID = UUID()
-    var title: String
-    var createdTime: Date
-    var MemoArray: [Memo]
-    var isFavorite: Bool
-    
-    init (title: String){
-        self.MemoArray = []
-        self.title = title
-        self.createdTime = Date.now
-        self.isFavorite = false
-    }
-}
-
-struct Memo : Hashable {
-
-    var id: UUID = UUID()
-    var title: String
-    var createdTime: Date
-    var content: String
-    var imageName: String
-    
-    init(title:String, content: String, imageName: String){
-        self.title = title
-        self.createdTime = Date.now
-        self.content = content
-        self.imageName = imageName
-    }
-}
-
-
 
 struct ContentView: View {
 //    @Environment(\.modelContext) private var modelContext
