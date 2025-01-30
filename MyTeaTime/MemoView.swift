@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MemoView: View{
-    @Binding var memo: Memo
+    @Bindable var memo: Memo
     @State var isEdit: Bool = false
     var body: some View {
         ScrollView{

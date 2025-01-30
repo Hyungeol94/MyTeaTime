@@ -63,12 +63,12 @@
 		1A1F718B2BCD595100A09C06 /* MyTeaTime */ = {
 			isa = PBXGroup;
 			children = (
+				1A1F718C2BCD595100A09C06 /* MyTeaTimeApp.swift */,
 				1A19FF9E2D4B84F7004916C0 /* Models.swift */,
 				1A1F718E2BCD595100A09C06 /* ContentView.swift */,
 				1A2472A52C57BF5200A135D9 /* CouponBookView.swift */,
 				1A1F71902BCD595100A09C06 /* Item.swift */,
 				1A2472A72C57BF6700A135D9 /* MemoView.swift */,
-				1A1F718C2BCD595100A09C06 /* MyTeaTimeApp.swift */,
 				1A5CB61C2BD0C20D009239C2 /* TeaTimeBookList.swift */,
 				1A5CB61E2BD0C21D009239C2 /* TeaTimeBookRow.swift */,
 				1A1F71922BCD595200A09C06 /* Assets.xcassets */,
@@ -296,6 +296,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyTeaTime/Preview Content\"";
+				DEVELOPMENT_TEAM = 2J2UA8CPHM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -324,6 +325,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MyTeaTime/Preview Content\"";
+				DEVELOPMENT_TEAM = 2J2UA8CPHM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

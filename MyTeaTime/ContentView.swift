@@ -9,18 +9,14 @@ import SwiftUI
 import SwiftData
 
 
-
 struct ContentView: View {
 //    @Environment(\.modelContext) private var modelContext
 //    @Query private var items: [Item]
-//    @Query private var TeaTimeBooks: [TeaTimeBook]
-    @State var teaTimeBooks: [TeaTimeBook] = [
-        TeaTimeBook(title : "나의 티타임북")
-    ]
+    @Query private var teaTimeBooks: [TeaTimeBook]
     
     var body: some View {
         //select TeaTimeBook first
-        TeaTimeBookList(teaTimeBooks: $teaTimeBooks)
+        TeaTimeBookList(teaTimeBooks: teaTimeBooks)
     }
     
     

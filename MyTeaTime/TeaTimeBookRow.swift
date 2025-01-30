@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TeaTimeBookRow: View{
-    @Binding var teaTimeBook: TeaTimeBook
+    @Bindable var teaTimeBook: TeaTimeBook
     @Binding var isEdit: Bool
+    
     var body: some View{
         HStack{
             if isEdit {

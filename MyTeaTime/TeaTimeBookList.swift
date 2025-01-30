@@ -7,9 +7,11 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
-struct TeaTimeBookList: View{
-    @Binding var teaTimeBooks: [TeaTimeBook]
+struct TeaTimeBookList: View {
+    @Environment(\.modelContext) private var modelContext
+    @State var teaTimeBooks: [TeaTimeBook]
     @State var showSheet: Bool = false
     @State var newBookTitle: String = ""
     @State private var selection = Set<TeaTimeBook>()
@@ -19,11 +21,11 @@ struct TeaTimeBookList: View{
            NavigationStack{
 //               List(selection: $selection){
                List {
-                   ForEach($teaTimeBooks){ $teaTimeBook in
+                   ForEach(teaTimeBooks){ teaTimeBook in
                        NavigationLink{
-                           CouponBookView(teaTimeBook: $teaTimeBook)
+                           CouponBookView(teaTimeBook: teaTimeBook)
                        } label: {
-                           TeaTimeBookRow(teaTimeBook: $teaTimeBook, isEdit: $isEdit)
+                           TeaTimeBookRow(teaTimeBook: teaTimeBook, isEdit: $isEdit)
                        }
                    }
                }
@@ -46,7 +48,7 @@ struct TeaTimeBookList: View{
                       TextField("새로운 티타임북",
                                 text: $newBookTitle)
                       Button(action:{
-                          teaTimeBooks.append(TeaTimeBook(title : newBookTitle))
+                          addBook(book: TeaTimeBook(title : newBookTitle))
                           showSheet = false
                       }, label: {
                           Text("추가")
@@ -57,6 +59,12 @@ struct TeaTimeBookList: View{
 //               Text("티타임북을 선택하세요")
 //           }
         //
-        
        }
    }
+
+extension TeaTimeBookList {
+    func addBook(book: TeaTimeBook) {
+        modelContext.insert(book)
+        showSheet = false
+    }
+}

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CouponBookView: View {
-    @Binding var teaTimeBook: TeaTimeBook
+    @Bindable var teaTimeBook: TeaTimeBook
     @State var newMemoTitle: String = ""
     @State var newMemoContent: String = ""
     @State var newMemoImageName: String = "DefaultCoffee"
@@ -23,6 +23,10 @@ struct CouponBookView: View {
         GridItem(.flexible()),
     ]
     
+    var sortedMemo: [Memo] {
+        return teaTimeBook.MemoArray.sorted { $0.createdTime < $1.createdTime }
+    }
+    
     
     var body: some View {
         //CollectionView
@@ -31,7 +35,6 @@ struct CouponBookView: View {
         let finalRowCount = rowCount * 3 == memoCount ? rowCount+1 : rowCount
 
         ScrollView {
-          
             LazyVGrid(columns: columns) {
 //                NavigationStack{
                     ForEach(0...finalRowCount*3-1, id: \.self) { i in
@@ -39,7 +42,7 @@ struct CouponBookView: View {
                         if (i < memoCount){
                             //                        NavigationStack {
                             NavigationLink {
-                                MemoView(memo: $teaTimeBook.MemoArray[i])
+                                MemoView(memo: sortedMemo[i])
                             } label: {
                                 Image("FilledCoffee")
                                     .resizable()
@@ -54,7 +57,6 @@ struct CouponBookView: View {
                                 .scaledToFit()
                         }
                     }
-                
             }
         }
         .navigationTitle(teaTimeBook.title)
